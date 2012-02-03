@@ -1,36 +1,50 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
-        <title>Forget about ACTA</title>
-        <link rel="stylesheet" href="styles.css">
-        <meta name="author" content="elwiz">
-        <meta name="description" content="I really don't care about ACTA !!!">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Drag and drop #0.6</title>
+        <style type="text/css">
+            body{ font: 100% "Trebuchet MS", sans-serif; padding: 50px; }
+            h1 { margin: 20px 0 0; }
+            #sortable { list-style-type: none; margin: 0 30px 30px 0; padding: 5px; border: 1px solid #aaa; width: 300px; }
+            #sortable li { background-color: #f0f0ff; border: 1px solid #ffffff; padding: 5px; margin: 5px; cursor: pointer; text-align: left; }
+            #sortable li.ui-sortable-helper { background-color: #e0e0ff; border: 1px solid #c0c0ff; }
+        </style>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="https://raw.github.com/elwiz/dnd4sortable/master/js/jquery-ui.dnd4sortable.min.js"></script>
+        <script type="text/javascript">
+        <!--
+            $(function(){
+
+                // sortable
+                $('#sortable').sortable();
+
+                // dnd4sortable
+                $('#sortable').dnd4sortable({
+                    drop: function(event) {
+
+                        // this is just a sample of what can be done using the File API
+                        if (event.dataTransfer && event.dataTransfer.files && event.dataTransfer.files.length) {
+                            this.dummy().text( 'Found '+event.dataTransfer.files.length+' file(s)' );
+                        } else {
+                            this.revert();
+                        }
+                    }
+                });
+            });
+        //-->
+        </script>
     </head>
     <body>
-        <section>
-            <article>
-                <h1>Forget ACTA, don't protest, go home...</h1>
-                <ul>
-                    <li>Drink beer
-                    <li>Watch TV
-                    <li>Have sex
-                    <li>Be a happier person !!!
-                </ul>
-                <footer>&raquo;</footer>
-            </article>
+        <h1>D 'n' D <sub>#0.6</sub></h1>
+        <p>Drag a file or a set of files over the sortable list visible below.</p>
 
-            <article>
-                <h1>ACTA &raquo; Ch. I &raquo; Sec. 1 &raquo; Art. 2:</h1>
-                <ol>
-                    <li>[...] Each Party <strong>shall be free</strong> to determine the appropriate method of implementing the provisions of this Agreement within its own legal system and practice.
-                    <li><strong>Nothing</strong> in this Agreement creates any obligation with respect to the distribution of resources as between enforcement of intellectual property rights and enforcement of law in general.
-                </ol>
-                <footer>&laquo;</footer>
-            </article>
-        </section>
-
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-        <script src="script.js"></script>
+        <ul id="sortable" title="sortable">
+            <li>this</li>
+            <li>list</li>
+            <li>is</li>
+            <li>sortable</li>
+        </ul>
     </body>
 </html>
